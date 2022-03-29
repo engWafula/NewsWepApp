@@ -11,9 +11,9 @@ const {Title,Text} = Typography
 const {Option} = Select
 
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
-export default function News({simplified}) {
-    const[newsCategory,setNewsCategory]=useState('World')
-    const {data:localNews, isFetching}=useGetCryptoNewsQuery({newsCategory,count:simplified?6:100});
+export default function Tech({simplified}) {
+    const[newsCategory,setNewsCategory]=useState('Tech')
+    const {data:localNews, isFetching}=useGetCryptoNewsQuery({newsCategory,count:simplified?7:100});
     const [searchTerm, setSearchTerm] = useState('');
     const [news, setNews] = useState([]);
     console.log(news)
@@ -36,7 +36,7 @@ export default function News({simplified}) {
     {!simplified && ( 
             <div className="search-crypto">
               <Input
-                placeholder="Search your favourite news"
+                placeholder="Search your favourite Tech news"
                 onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
               />
             </div>

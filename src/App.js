@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space } from 'antd';
 
-import { Exchanges, HomePage, News, Cryptocurrencies, CryptoDetails, Navbar,LocalNews } from './components';
+import { Tech, HomePage, News, Cryptocurrencies, CryptoDetails, Navbar,LocalNews } from './components';
 import './App.css';
 
 const App = () => (
@@ -20,8 +20,8 @@ const App = () => (
             {/* <Route exact path="/exchanges">
               <Exchanges />
             </Route> */}
-            <Route exact path="/cryptocurrencies">
-              <Cryptocurrencies />
+            <Route exact path="/tech_news">
+              <Tech />
             </Route>
             <Route exact path="/crypto/:coinId">
               <CryptoDetails />
@@ -32,26 +32,24 @@ const App = () => (
             <Route exact path="/news">
               <News />
             </Route>
-            <Route exact path="/exchanges">
-              <Exchanges />
-            </Route>
           </Switch>
         </div>
       </Layout>
       <div className="footer">
         <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2022
           <Link to="/">
-           Ug Crypto Inc.
+           Group 19 Inc.
           </Link> 
           <br />
           All Rights Reserved.
           <br />
-          Designed by  Wafula Allan  Isaac
+          Designed by  Group 19
         </Typography.Title>
         <Space>
           <Link to="/">Home</Link>
-          <Link to="/exchanges">Exchanges</Link>
-          <Link to="/news">News</Link>
+          <Link to="/exchanges">Tech News</Link>
+          <Link to="/localnews">Local News </Link>
+          <Link to="/news">World News </Link>
         </Space>
       </div>
     </div>

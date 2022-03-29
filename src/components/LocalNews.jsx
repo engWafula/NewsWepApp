@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import millify from 'millify';
-import { Link } from 'react-router-dom';
 import {Select,Card,Typography,Row,Col,Avatar,Input} from "antd"
-import Loader from "./Loader"
-import {   useGetLocalNewsQuery } from '../services/LocalNewsApi';
+ import { useGetCryptosQuery } from '../services/CryptoApi';
+import {useGetCryptoNewsQuery} from '../services/cryptoNewsApi';
 import moment from "moment"
+
+import Loader from "./Loader"
 
 
 const {Title,Text} = Typography
 const {Option} = Select
+
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
-
-
-export default function LocalNews({ simplified}) {
-
-  const count = simplified ? 10 : 100;
-
-    const { data: localNews, isFetching } = useGetLocalNewsQuery();
+export default function LocalNews({simplified}) {
+    const[newsCategory,setNewsCategory]=useState('uganda')
+    const {data:localNews, isFetching}=useGetCryptoNewsQuery({newsCategory,count:simplified?6:100});
     const [searchTerm, setSearchTerm] = useState('');
     const [news, setNews] = useState([]);
     console.log(news)
@@ -24,7 +21,7 @@ export default function LocalNews({ simplified}) {
     useEffect(() => {
     //setCryptos(cryptosList?.data?.coins);
 
-    const filteredData = localNews?.articles.filter((item) => item.title.toLowerCase().includes(searchTerm));
+    const filteredData = localNews?.value.filter((item) => item.name.toLowerCase().includes(searchTerm));
 
     setNews(filteredData);
   }, [localNews, searchTerm]);
@@ -32,44 +29,46 @@ export default function LocalNews({ simplified}) {
   if(isFetching) return <Loader/>
 
 
+
   return(
     <>
 
-{!simplified && ( 
-        <div className="search-crypto">
-          <Input
-            placeholder="Search Cryptocurrency"
-            onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
-          />
-        </div>
-       )} 
-       
-      <Row gutter={[32, 32]} className="crypto-card-container">
-  
-    {
-      news?.map((news, i)=>(
-        <Col xs={24} sm={12} lg={8} key={i}>
-        <Card hoverable className="news-card">
-          <a href={news.link} target="_blank" rel="noreferrer">
-            <div className="news-image-container">
-              <Title className="news-title" level={4}>{news.title}</Title>
-              <img src={news?.media  || demoImage} alt="" width="100" height="100" />
+    {!simplified && ( 
+            <div className="search-crypto">
+              <Input
+                placeholder="Search your favourite local news"
+                onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+              />
             </div>
-            <p>{news.summary.length > 100 ? `${news.summary.substring(0, 100)}...` : news.summary}</p>
-            <div className="provider-container">
-              <div>
-                <Avatar src={news?.media || demoImage} alt="" />
-                <Text className="provider-name">{news.author}</Text>
-              </div>
-              <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
-            </div>
-          </a>
-        </Card>
-      </Col>
-      ))
+           )} 
+           
+          <Row gutter={[32, 32]} className="crypto-card-container">
+      
+        {
+          news?.map((news, i)=>(
+            <Col xs={24} sm={12} lg={8} key={i}>
+            <Card hoverable className="news-card">
+              <a href={news.url} target="_blank" rel="noreferrer">
+              <Title className="news-title" level={4}>{news.name}</Title>
+                <div className="news-image-container">
+                
+                  <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt="" width="100" height="100" />
+                </div>
+                <p>{news.description.length > 100 ? `${news.description.substring(0, 100)}...` : news.description}</p>
+                <div className="provider-container">
+                  <div>
+                    <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="" />
+                    <Text className="provider-name">{news.provider[0]?.name}</Text>
+                  </div>
+                  <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                </div>
+              </a>
+            </Card>
+          </Col>
+          ))
+        }
+        </Row>
+        </>
+    
+      )
     }
-    </Row>
-    </>
-
-  )
-}

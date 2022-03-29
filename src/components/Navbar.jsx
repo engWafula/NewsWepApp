@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
-import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
+import { HomeOutlined, MoneyCollectOutlined, 
+  ReadOutlined,
+  BulbOutlined,
+   FundOutlined,
+    MenuOutlined } from '@ant-design/icons';
 
-import icon from '../images/crypto.png';
+import icon from '../images/news.png';
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -31,7 +35,7 @@ const Navbar = () => {
     <div className="nav-container">
       <div className="logo-container">
         <Avatar src={icon} size="large" />
-        <Typography.Title level={2} className="logo"><Link to="/">UG Crypto</Link></Typography.Title>
+        <Typography.Title level={2} className="logo"><Link to="/">Group 19</Link></Typography.Title>
         <Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}><MenuOutlined /></Button>
       </div>
       {activeMenu && (
@@ -40,15 +44,15 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item icon={<FundOutlined />}>
-          <Link to="/cryptocurrencies">Cryptocurrencies</Link>
+          <Link to="/tech_news">Tech News</Link>
         </Menu.Item>
        {/* <Menu.Item icon={<MoneyCollectOutlined />}>
           <Link to="/exchanges">Exchanges</Link>
         </Menu.Item>  */}
         <Menu.Item icon={<BulbOutlined />}>
-          <Link to="/news">News</Link>
+          <Link to="/news">World News</Link>
         </Menu.Item>
-        <Menu.Item icon={<BulbOutlined />}>
+        <Menu.Item icon={<ReadOutlined />}>
           <Link to="/localnews">Local News</Link>
         </Menu.Item>
       </Menu>
