@@ -13,7 +13,7 @@ const {Option} = Select
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 export default function Tech({simplified}) {
     const[newsCategory,setNewsCategory]=useState('Tech')
-    const {data:localNews, isFetching}=useGetCryptoNewsQuery({newsCategory,count:simplified?7:100});
+    const {data:localNews, isFetching}=useGetCryptoNewsQuery({newsCategory,count:simplified?6:100});
     const [searchTerm, setSearchTerm] = useState('');
     const [news, setNews] = useState([]);
     console.log(news)
