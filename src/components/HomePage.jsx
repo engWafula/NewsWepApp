@@ -5,6 +5,7 @@ import {Link } from "react-router-dom"
 import { useGetCryptosQuery } from '../services/CryptoApi';
 import News from './News';
 import LocalNews from './LocalNews';
+import WeatherUpdates from './WeatherUpdates';
 import Tech from './Tech';
 import Loader from './Loader';
 import Weather from './Weather';
@@ -28,11 +29,12 @@ export default function HomePage() {
         <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.total} /></Col>
       
       <Col span={12}><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)} /></Col>  */}
-           <div className="home-heading-container">
+           {/* <div className="home-heading-container">
         <Title level={2} className="home-title">Current Weather Updates</Title>
         <Title level={3} className="show-more"><Link to="/tech_news">Kampala</Link></Title>
-      </div>
-        <Weather/>
+        <WeatherUpdates/>
+      </div> */}
+      
      
       <div className="home-heading-container">
         <Title level={2} className="home-title">Top  Tech news In The World</Title>
