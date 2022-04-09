@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {Select,Card,Typography,Row,Col,Avatar,Input} from "antd"
+import {Input} from "antd"
 import {mobile} from '../responsive'
 
 
