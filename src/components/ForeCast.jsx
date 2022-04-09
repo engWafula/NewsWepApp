@@ -48,6 +48,7 @@ const StyledForecast = styled.div`
     padding: 20px;
     display: flex;
     overflow-y: hidden;
+
  
    
 

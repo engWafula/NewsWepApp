@@ -57,7 +57,7 @@ const Navbar = () => {
         </Menu.Item>
 
         <Menu.Item icon={<ReadOutlined />}>
-          <Link to="/weather">Weather Updates</Link>
+          <Link to="/weather">Weather</Link>
         </Menu.Item>
       </Menu>
       )}

@@ -1,12 +1,12 @@
 
 import React, { useState } from 'react';
 import useRequest from '../hooks/useRequest';
-//import useRequest  from '..'
+import styled from "styled-components";
 import {Select,Card,Typography,Row,Col,Avatar,Input} from "antd"
 import Loader from "./Loader"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import {mobile} from '../responsive'
 // Components
 import CurrentWeather from './CurrentWeather';
 import Forecast from './ForeCast';
@@ -24,9 +24,9 @@ function WeatherUpdates() {
   return (
    
     
-    <div>
+    <>
       <ToastContainer />
-      <h2 style={{ margin: '20px 0px' }}>WeatherApp</h2>
+      <Wrapper>
       <Search setSearchResults={setSearchResult} />
       {Object.keys(data).length !== 0 && (
         <>
@@ -34,9 +34,25 @@ function WeatherUpdates() {
           <Forecast data={data.forecast} />
         </>
       )}
-    </div>
+    </Wrapper>
+    </>
 
   );
 }
+
+
+const Wrapper=styled.div`
+margin:50px;
+align-items:center;
+justify-content:center;
+margin-left:100px;
+${mobile({
+
+  margin:'0px',
+  alignItems:'center',
+  justifyContent:'center',
+  marginLeft:'0px'
+  })}
+`
 
 export default WeatherUpdates;

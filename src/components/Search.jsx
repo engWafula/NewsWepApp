@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import {Select,Card,Typography,Row,Col,Avatar,Input} from "antd"
+import {mobile} from '../responsive'
+
+
 function Search({ setSearchResults }) {
   const [search, setSearch] = useState('');
 
@@ -28,11 +31,22 @@ function Search({ setSearchResults }) {
 const StyledSearch = styled.div`
   margin-bottom: 20px;
   margin-left:600px;
+
+  ${mobile({
+    marginBottom: '10px',
+    marginLeft:'50px'
+    })}
   input {
     width: 60%;
     height: 45px;
     border-radius: 10px;
     padding-left: 20px;
+    ${mobile({
+      width: '100%',
+      height:'30px',
+      paddingLeft: '10px',
+      marginRight:'50px'
+      })}
   }
 `;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {mobile} from '../responsive'
 
 function CurrentWeather({ data }) {
   return (
@@ -11,7 +12,7 @@ function CurrentWeather({ data }) {
             alt={data.current.condition.text}
           />
 
-          <h1>{data.current.temp_c}°C</h1>
+          <Title>{data.current.temp_c}°C</Title>
 
           <div className='content'>
             <h5>Precipitation: {data.current.precip_in}</h5>
@@ -28,7 +29,12 @@ function CurrentWeather({ data }) {
   );
 }
 
+const Title= styled.h2`
+
+`
+
 const StyledWeather = styled.div`
+
 
 header {
     display: flex;
@@ -36,13 +42,28 @@ header {
     align-items:center;
     margin-top:80px;
     margin-left:180px;
+    ${mobile({
+      padding:'10px',
+      flexDirection:'column',
+      marginTop:'15px',
+      marginLeft:'160px',
+      width:'5px',
+    
+      justifyContent: 'space-evenly',
+    
+      })}
+ 
     .current-weather {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 350px;
       padding: 10px;
-   
+      marginLeft:10px;
+      ${mobile({
+       marginBottom:'25px',
+      
+        })}
 
       img {
         width: 80px;
