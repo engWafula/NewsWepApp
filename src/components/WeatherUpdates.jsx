@@ -14,7 +14,7 @@ import Search from './Search';
 
 function WeatherUpdates() {
   const [searchResult, setSearchResult] = useState('kampala');
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_KEY}&q=${searchResult}`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=d25f33f4635b4880bb8102136220604&q=${searchResult}`;
   const  {data} = useRequest(url);
 
   //const {loading} =useRequest()
