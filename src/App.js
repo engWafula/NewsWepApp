@@ -48,6 +48,7 @@ const App = () => (
           <Link to="/exchanges">Tech News</Link>
           <Link to="/localnews">Local News </Link>
           <Link to="/news">World News </Link>
+          <Link to="/Weather">Weather Updates </Link>
         </Space>
       </div>
     </div>
