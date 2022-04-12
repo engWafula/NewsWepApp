@@ -49,10 +49,10 @@ export default function Tech({simplified}) {
             <Col xs={24} sm={12} lg={8} key={i}>
             <Card hoverable className="news-card">
               <a href={news.url} target="_blank" rel="noreferrer">
-              <Title className="news-title" level={4}>{news.name}</Title>
+              <Title className="news-title" level={4}>{news.name.length >100 ? `${news.name.substring(0, 50)}` : news.name}</Title>
                 <div className="news-image-container">
                 
-                  <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt="" width="100" height="100" />
+                  <img src={news?.image?.thumbnail?.contentUrl || demoImage} className='image' alt="" width="300" height="200" />
                 </div>
                 <p>{news.description.length > 100 ? `${news.description.substring(0, 100)}...` : news.description}</p>
                 <div className="provider-container">

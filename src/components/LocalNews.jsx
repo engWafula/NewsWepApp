@@ -10,6 +10,7 @@ import Loader from "./Loader"
 const {Title,Text} = Typography
 const {Option} = Select
 
+
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 export default function LocalNews({simplified}) {
     const[newsCategory,setNewsCategory]=useState('uganda')
@@ -49,10 +50,10 @@ export default function LocalNews({simplified}) {
             <Col xs={24} sm={12} lg={8} key={i}>
             <Card hoverable className="news-card">
               <a href={news.url} target="_blank" rel="noreferrer">
-              <Title className="news-title" level={4}>{news.name}</Title>
+                            <Title className="news-title" level={4}>{news.name.length >100 ? `${news.name.substring(0, 40)}` : news.name}</Title>
                 <div className="news-image-container">
                 
-                  <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt="" width="100" height="100" />
+                <img src={news?.image?.thumbnail?.contentUrl || demoImage} className='image' alt="" width="300" height="200" />
                 </div>
                 <p>{news.description.length > 100 ? `${news.description.substring(0, 100)}...` : news.description}</p>
                 <div className="provider-container">
