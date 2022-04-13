@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Select,Card,Typography,Row,Col,Avatar,Input} from "antd"
+import {Row,Input} from "antd"
 
 const api = {
   key: "7ef547d0d64b77145c5dcf3d58f9c8a7",

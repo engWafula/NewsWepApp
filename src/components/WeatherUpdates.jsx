@@ -2,25 +2,29 @@
 import React, { useState } from 'react';
 import useRequest from '../hooks/useRequest';
 import styled from "styled-components";
-import {Select,Card,Typography,Row,Col,Avatar,Input} from "antd"
-import Loader from "./Loader"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {mobile} from '../responsive'
-// Components
+import {useGetNewsQuery} from '../services/NewsApi';
 import CurrentWeather from './CurrentWeather';
 import Forecast from './ForeCast';
 import Search from './Search';
+import Loader from './Loader';
+
+
 
 function WeatherUpdates() {
   const [searchResult, setSearchResult] = useState('kampala');
+  const {isFetching} = useGetNewsQuery(10);
+
+  
   const url = `https://api.weatherapi.com/v1/forecast.json?key=d25f33f4635b4880bb8102136220604&q=${searchResult}`;
   const  {data} = useRequest(url);
 
-  //const {loading} =useRequest()
 
 
 
+  if(isFetching) return <Loader/>
   return (
    
     

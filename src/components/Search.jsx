@@ -30,11 +30,11 @@ function Search({ setSearchResults }) {
 
 const StyledSearch = styled.div`
   margin-bottom: 20px;
-  margin-left:600px;
+  margin-left:480px;
 
   ${mobile({
     marginBottom: '10px',
-    marginLeft:'50px'
+    marginLeft:'10px'
     })}
   input {
     width: 60%;

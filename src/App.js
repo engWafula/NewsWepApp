@@ -36,12 +36,12 @@ const App = () => (
       <div className="footer">
         <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2022
           <Link to="/">
-           Group 19 Inc.
+           Group 15 Inc.
           </Link> 
           <br />
           All Rights Reserved.
           <br />
-          Designed by  Group 19
+          Built by  Group 15
         </Typography.Title>
         <Space>
           <Link to="/">Home</Link>

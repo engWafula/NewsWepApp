@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import {mobile} from '../responsive'
+
 
 function Forecast({ data }) {
   const currentWeather = data.forecastday[0].hour;
@@ -8,7 +10,7 @@ function Forecast({ data }) {
   return (
     <StyledForecast>
  
-      <h2>Current Weather</h2>
+      <h2>Today's Forecast</h2>
       <div className='box-shadow current-forecast'>
         {currentWeather.map((weather) => (
           <div className='card box-shadow' key={weather.time_epoch}>
@@ -19,7 +21,7 @@ function Forecast({ data }) {
         ))}
       </div>
      
-      <h2>Future Forecast</h2>
+      <h2> Tomorrow's Forecast</h2>
       {data.forecastday.map((futureWeather) => (
         <div
           key={futureWeather.date_epoch}
@@ -43,11 +45,19 @@ const StyledForecast = styled.div`
   h2 {
     margin: 20px 0;
     margin-left:220px;
+    text-color: #001529;
+
+    ${mobile({
+     margin: '10px 0px',
+     marginLeft:'20 px'
+    
+      })}
   }
   .current-forecast {
     padding: 20px;
     display: flex;
     overflow-y: hidden;
+    
 
  
    

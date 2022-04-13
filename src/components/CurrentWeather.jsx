@@ -43,12 +43,11 @@ header {
     margin-top:80px;
     margin-left:180px;
     ${mobile({
-      padding:'10px',
+      padding:'7px',
       flexDirection:'column',
       marginTop:'15px',
-      marginLeft:'160px',
+      marginLeft:'150px',
       width:'5px',
-    
       justifyContent: 'space-evenly',
     
       })}

@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import {Select,Card,Typography,Row,Col,Avatar,Input} from "antd"
- import { useGetCryptosQuery } from '../services/CryptoApi';
-import {useGetCryptoNewsQuery} from '../services/cryptoNewsApi';
+import {Card,Typography,Row,Col,Avatar,Input} from "antd"
+import {useGetNewsQuery} from '../services/NewsApi';
 import moment from "moment"
-
 import Loader from "./Loader"
 
 
 const {Title,Text} = Typography
-const {Option} = Select
+
 
 
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 export default function LocalNews({simplified}) {
-    const[newsCategory,setNewsCategory]=useState('uganda')
-    const {data:localNews, isFetching}=useGetCryptoNewsQuery({newsCategory,count:simplified?6:100});
+    const[newsCategory]=useState('uganda')
+    const {data:localNews, isFetching}=useGetNewsQuery({newsCategory,count:simplified?6:100});
     const [searchTerm, setSearchTerm] = useState('');
     const [news, setNews] = useState([]);
-    console.log(news)
+  
 
     useEffect(() => {
-    //setCryptos(cryptosList?.data?.coins);
-
     const filteredData = localNews?.value.filter((item) => item.name.toLowerCase().includes(searchTerm));
 
     setNews(filteredData);

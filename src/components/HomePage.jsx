@@ -1,41 +1,23 @@
 import React from 'react';
-import millify from 'millify';
-import {Row,Col,Statistic,Typography} from "antd"
+import {Typography} from "antd"
 import {Link } from "react-router-dom"
-import { useGetCryptosQuery } from '../services/CryptoApi';
+import {useGetNewsQuery} from '../services/NewsApi';
 import News from './News';
 import LocalNews from './LocalNews';
-import WeatherUpdates from './WeatherUpdates';
 import Tech from './Tech';
 import Loader from './Loader';
-import Weather from './Weather';
+
 
 //i destructure the Typography component in antd  to  get  The Title property
 const {Title} =Typography
 
 export default function HomePage() {
-    const {data,isFetching} = useGetCryptosQuery(10);
-    const globalStats =data?.data?.stats
+    const {isFetching} = useGetNewsQuery(10);
+
     if(isFetching) return <Loader/>
-    // console.log(data)
     return (
     <>
       <Title level={2} className="heading"></Title>
-     
-         {/* <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.total} /></Col>
-        <Col span={12}><Statistic title="Total Exchanges" value={millify(globalStats.totalExchanges)} /></Col>
-        <Col span={12}><Statistic title="Total Market Cap:" value={`$${millify(globalStats.totalMarketCap)}`} /></Col>
-        <Col span={12}><Statistic title="Total 24h Volume" value={`$${millify(globalStats.total24hVolume)}`} /></Col>
-        <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.total} /></Col>
-      
-      <Col span={12}><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)} /></Col>  */}
-           {/* <div className="home-heading-container">
-        <Title level={2} className="home-title">Current Weather Updates</Title>
-        <Title level={3} className="show-more"><Link to="/tech_news">Kampala</Link></Title>
-        <WeatherUpdates/>
-      </div> */}
-      
-     
       <div className="home-heading-container">
         <Title level={2} className="home-title">Top  Tech news In The World</Title>
         <Title level={3} className="show-more"><Link to="/tech_news">Show more</Link></Title>

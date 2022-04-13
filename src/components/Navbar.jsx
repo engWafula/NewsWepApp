@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
-import { HomeOutlined, MoneyCollectOutlined, 
+import { HomeOutlined,
   ReadOutlined,
   BulbOutlined,
    FundOutlined,
@@ -46,9 +46,6 @@ const Navbar = () => {
         <Menu.Item icon={<FundOutlined />}>
           <Link to="/tech_news">Tech News</Link>
         </Menu.Item>
-       {/* <Menu.Item icon={<MoneyCollectOutlined />}>
-          <Link to="/exchanges">Exchanges</Link>
-        </Menu.Item>  */}
         <Menu.Item icon={<BulbOutlined />}>
           <Link to="/news">World News</Link>
         </Menu.Item>
